@@ -2,6 +2,8 @@ autocompletepod() {
     kubectl get pod | grep ${@} | head -n1 | awk '{print $1;}'
 }
 
+# yay -S kubecolor
 alias kubectl=kubecolor
+
 alias kubebash='f(){ kubectl exec --stdin --tty $(autocompletepod $1) -- /bin/bash; unset -f f; }; f'
 alias kubesh='f(){ kubectl exec --stdin --tty $(autocompletepod $1) -- /bin/sh; unset -f f; }; f'
