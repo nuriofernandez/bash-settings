@@ -1,1 +1,24 @@
-PS1="\[\033[32m\]\@ \[\033[33m\]\w\$(__git_ps1 \" (\[\033[36m\]%s\[\033[33m\])\") \n⚡️\[\033[0m\] "
+# Define colors using ANSI escape codes
+COLOR_RED='\[\e[31m\]'
+COLOR_GREEN='\[\e[32m\]'
+COLOR_YELLOW='\[\e[33m\]'
+COLOR_BLUE='\[\e[34m\]'
+COLOR_WHITE='\[\e[37m\]'
+COLOR_CYAN='\[\e[36m\]'
+COLOR_RESET='\[\e[0m\]'
+
+# The function to get the Git branch status (no change needed here)
+function parse_git_branch_status {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    local branch_name
+    branch_name=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    # Returns: (branch-name)
+    echo "(${branch_name})"
+  else
+    # Returns: an empty string (to be used below for proper spacing)
+    echo ""
+  fi
+}
+
+
+PS1="${COLOR_GREEN}\@ ${COLOR_YELLOW}\w ${COLOR_BLUE}\$(parse_git_branch_status \" (${COLOR_CYAN}%s${COLOR_YELLOW})\") \n⚡️${COLOR_RESET} "
