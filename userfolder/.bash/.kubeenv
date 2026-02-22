@@ -1,0 +1,2 @@
+alias kubeglaucus="rm ~/.kube/config && cp ~/.kube/glaucusinfra ~/.kube/config"
+alias kubezona="rm ~/.kube/config && cp ~/.kube/zonatandasinfra ~/.kube/config"

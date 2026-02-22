@@ -1,0 +1,10 @@
+# Only for mac
+if [ "$(uname -s)" = "Darwin" ]; then
+  # Load bash-completion script
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+
+  # Setup custom terminal line style
+  source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+fi
