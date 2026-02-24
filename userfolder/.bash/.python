@@ -1,8 +1,7 @@
 # Only for mac
 if [ "$(uname -s)" = "Darwin" ]; then
     # Setting PATH for Python 3
-    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-    export PATH="'"$(brew --prefix)"'/opt/python@3.9/libexec/bin:$PATH"
+    export PATH="$(brew --prefix python)/libexec/bin:$PATH"
 
     # Setting PATH for Python 2.7
     # The original version is saved in .bash_profile.pysave
